@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>SMM Panel Mini</title>
+<style>
+body {font-family:Arial; background:#0f172a; color:white; text-align:center;}
+.box {background:#1e293b; padding:20px; margin:20px auto; width:300px; border-radius:10px;}
+input {width:90%; padding:8px; margin:5px;}
+button {padding:10px; background:#22c55e; border:none; color:white; cursor:pointer;}
+</style>
+</head>
+
+<body>
+
+<h1>🔥 SMM PANEL MINI</h1>
+
+<div class="box" id="auth">
+    <h2>Đăng ký / Đăng nhập</h2>
+    <input id="username" placeholder="Tài khoản">
+    <input id="password" type="password" placeholder="Mật khẩu">
+    <br>
+    <button onclick="register()">Đăng ký</button>
+    <button onclick="login()">Đăng nhập</button>
+</div>
+
+<div class="box" id="dashboard" style="display:none;">
+    <h2>Dashboard</h2>
+    <p id="user"></p>
+    <p id="balance"></p>
+
+    <input id="money" placeholder="Số tiền nạp">
+    <button onclick="deposit()">Nạp tiền</button>
+    <br><br>
+    <button onclick="logout()">Đăng xuất</button>
+</div>
+
+<script>
+let currentUser = null;
+
+function register(){
+    let u = username.value;
+    let p = password.value;
+
+    if(localStorage.getItem(u)){
+        alert("Tài khoản đã tồn tại");
+        return;
+    }
+
+    let user = {password:p, balance:0};
+    localStorage.setItem(u, JSON.stringify(user));
+    alert("Đăng ký thành công!");
+}
+
+function login(){
+    let u = username.value;
+    let p = password.value;
+
+    let data = localStorage.getItem(u);
+    if(!data){
+        alert("Không tồn tại");
+        return;
+    }
+
+    let user = JSON.parse(data);
+
+    if(user.password !== p){
+        alert("Sai mật khẩu");
+        return;
+    }
+
+    currentUser = u;
+    showDashboard();
+}
+
+function showDashboard(){
+    let user = JSON.parse(localStorage.getItem(currentUser));
+
+    auth.style.display = "none";
+    dashboard.style.display = "block";
+
+    document.getElementById("user").innerText = "User: " + currentUser;
+    document.getElementById("balance").innerText = "Số dư: " + user.balance + " VND";
+}
+
+function deposit(){
+    let amount = Number(document.getElementById("money").value);
+    let user = JSON.parse(localStorage.getItem(currentUser));
+
+    user.balance += amount;
+    localStorage.setItem(currentUser, JSON.stringify(user));
+
+    showDashboard();
+}
+
+function logout(){
+    currentUser = null;
+    auth.style.display = "block";
+    dashboard.style.display = "none";
+}
+</script>
+
+</body>
+</html>
