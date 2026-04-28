@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Xuân Store</title>
+</head>
+
+<body style="background:black;color:white;text-align:center">
+
+<h1>🔥 XUÂN STORE 🔥</h1>
+<p>Dịch vụ mạng xã hội - Nạp game - Locket Gold</p>
+
+<button onclick="alert('Liên hệ qua Messenger nhé!')">
+Đặt ngay
+</button>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Xuân Store</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #020617;
+}
+
+.logo {
+  color: #00ffcc;
+  font-weight: bold;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero button {
+  padding: 10px 20px;
+  background: #00ffcc;
+  border: none;
+}
+
+/* SERVICES */
+.services {
+  padding: 20px;
+}
+
+.card {
+  background: #1e293b;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.card button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background: #00ffcc;
+  border: none;
+}
+
+/* FORM */
+#formBox {
+  display: none;
+  text-align: center;
+  padding: 20px;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="logo">🔥 XUÂN STORE</div>
+</div>
+
+<div class="hero">
+  <h1>Dịch vụ mạng xã hội giá rẻ</h1>
+  <p>Facebook - TikTok - Instagram - Locket Gold</p>
+  <button onclick="showForm()">Đặt ngay</button>
+</div>
+
+<div class="services">
+
+  <div class="card">
+    Facebook Like / Follow
+    <button onclick="showForm()">Mua</button>
+  </div>
+
+  <div class="card">
+    TikTok Tim / View
+    <button onclick="showForm()">Mua</button>
+  </div>
+
+  <div class="card">
+    Instagram Follow
+    <button onclick="showForm()">Mua</button>
+  </div>
+
+  <div class="card">
+    Locket Gold
+    <button onclick="showForm()">Mua</button>
+  </div>
+
+</div>
+
+<div id="formBox">
+  <h2>Nhập thông tin</h2>
+  <input placeholder="Tên"><br>
+  <input placeholder="Link tài khoản"><br>
+  <button onclick="order()">Xác nhận</button>
+</div>
+
+<script>
+function showForm() {
+  document.getElementById("formBox").style.display = "block";
+}
+
+function order() {
+  window.location.href = "https://m.me/";
+}
+</script>
+
+</body>
+</html>
